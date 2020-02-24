@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const SeparatorStyled = styled.View`
   height: 1px;
-  background-color: ${props => props.theme.separator_line_color};
+  background-color: ${props => props.theme.styles.separator_line_color};
 `;
 
 export default function Separator() {

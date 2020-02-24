@@ -12,12 +12,12 @@ const TitleStyled = styled.Text`
   font-size: 20px;
   padding-bottom: 20px;
   padding-top: 20px;
-  color: ${props => props.theme.text_color};
+  color: ${props => props.theme.styles.text_color};
 `;
 
 const BodyStyled = styled.Text`
   padding-bottom: 20px;
-  color: ${props => props.theme.text_color};
+  color: ${props => props.theme.styles.text_color};
 `;
 
 export default function Row({item}) {

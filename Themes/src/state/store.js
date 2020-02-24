@@ -1,7 +1,6 @@
 import React, {createContext, useReducer} from 'react';
 
-import {Dark, Light} from '../styles/index';
-import {ThemesEvents} from '../events/index';
+import {Dark, Light} from '../components/Themes';
 
 const initialState = Light;
 const store = createContext(initialState);
@@ -10,15 +9,15 @@ const {Provider} = store;
 function StateProvider({children}) {
   const [state, dispatch] = useReducer((state, {type}) => {
     switch (type) {
-      case ThemesEvents.to_dark:
-        return {
-          ...state,
-          ...Dark,
-        };
-      case ThemesEvents.to_light:
+      case Dark.turn_off:
         return {
           ...state,
           ...Light,
+        };
+      case Light.turn_off:
+        return {
+          ...state,
+          ...Dark,
         };
       default:
         return {
