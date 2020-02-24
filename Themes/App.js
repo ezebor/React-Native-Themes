@@ -7,20 +7,14 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
 
 import MainLayout from './src/components/MainLayout';
-import styled from 'styled-components';
+import {StateProvider} from './src/state/store';
 
-const App: () => React$Node = () => {
-  return <MainLayout />;
-};
-
-export default App;
+export default function App() {
+  return (
+    <StateProvider>
+      <MainLayout />
+    </StateProvider>
+  );
+}

@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useContext} from 'react';
+import {store} from '../state/store';
 
 import styled from 'styled-components';
 
@@ -12,17 +12,20 @@ const TitleStyled = styled.Text`
   font-size: 20px;
   padding-bottom: 20px;
   padding-top: 20px;
+  color: ${props => props.theme.text_color};
 `;
 
 const BodyStyled = styled.Text`
   padding-bottom: 20px;
+  color: ${props => props.theme.text_color};
 `;
 
 export default function Row({item}) {
+  const {state} = useContext(store);
   return (
     <ContainerStyled>
-      <TitleStyled>{item.title}</TitleStyled>
-      <BodyStyled>{item.body}</BodyStyled>
+      <TitleStyled theme={state}>{item.title}</TitleStyled>
+      <BodyStyled theme={state}>{item.body}</BodyStyled>
     </ContainerStyled>
   );
 }

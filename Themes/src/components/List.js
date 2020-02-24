@@ -1,5 +1,4 @@
-import React from 'react';
-import {View, FlatList} from 'react-native';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Row from './Row';
 import SeparatorStyled from './Separator';

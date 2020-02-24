@@ -1,13 +1,14 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useContext} from 'react';
+import {store} from '../state/store';
 
 import styled from 'styled-components';
 
 const SeparatorStyled = styled.View`
   height: 1px;
-  background-color: grey;
+  background-color: ${props => props.theme.separator_line_color};
 `;
 
 export default function Separator() {
-  return <SeparatorStyled />;
+  const {state} = useContext(store);
+  return <SeparatorStyled theme={state} />;
 }

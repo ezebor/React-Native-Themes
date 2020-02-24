@@ -1,20 +1,21 @@
 import React, {createContext, useReducer} from 'react';
 
 import {Dark, Light} from '../styles/index';
+import {ThemesEvents} from '../events/index';
 
-const initialState = {};
+const initialState = Light;
 const store = createContext(initialState);
 const {Provider} = store;
 
-export function StateProvider({children}) {
-  const [state, dispatch] = useReducer((state, action) => {
-    switch (action.type) {
-      case 'CHANGE_TO_DARK_THEME':
+function StateProvider({children}) {
+  const [state, dispatch] = useReducer((state, {type}) => {
+    switch (type) {
+      case ThemesEvents.to_dark:
         return {
           ...state,
           ...Dark,
         };
-      case 'CHANGE_TO_LIGHT_THEME':
+      case ThemesEvents.to_light:
         return {
           ...state,
           ...Light,
@@ -30,4 +31,4 @@ export function StateProvider({children}) {
   return <Provider value={{state, dispatch}}>{children}</Provider>;
 }
 
-export {store};
+export {store, StateProvider};

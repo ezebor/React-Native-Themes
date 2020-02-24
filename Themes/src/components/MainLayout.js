@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Button} from 'react-native';
-
+import React, {useContext} from 'react';
+import {Button} from 'react-native';
+import {store} from '../state/store';
 import List from './List';
 
 import styled from 'styled-components';
@@ -13,18 +13,18 @@ const ScrollViewStyled = styled.ScrollView`
   flex: 0 0 100%;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: ${props => props.theme.background_color};
 `;
 
-let mode = 'nocturno';
-
 export default function MainLayout() {
+  const {state, dispatch} = useContext(store);
   return (
     <SafeAreaViewStyled>
-      <ScrollViewStyled>
+      <ScrollViewStyled theme={state}>
         <Button
-          title={`Cambiar a modo ${mode}`}
+          title={`Cambiar a modo ${state.name}`}
           onPress={() => {
-            mode = 'diurno';
+            dispatch({type: state.switch_to});
           }}
         />
         <List />
